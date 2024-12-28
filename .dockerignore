@@ -1,0 +1,11 @@
+.gitignore
+README.md
+.env
+docker-compose.yaml
+Dockerfile
+.dockerignore
+.git
+.github
+lint.sh
+*.idea
+data/
