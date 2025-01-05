@@ -4,19 +4,19 @@ import (
 	"fmt"
 )
 
-func ZimExistsByName(name string) (bool, error) {
+func GetZimByName(name string) (*Entry, error) {
 	allZims, err := GetAvailableZims(0, 1000, "eng")
 
 	if err != nil {
 		fmt.Printf("GetAvailableZims error: %v\n", err)
-		return false, err
+		return nil, err
 	}
 
 	for _, zim := range allZims.Entries {
 		if zim.Name == name {
-			return true, nil
+			return &zim, nil
 		}
 	}
 
-	return false, nil
+	return nil, nil
 }

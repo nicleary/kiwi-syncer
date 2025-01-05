@@ -23,16 +23,18 @@ type Entry struct {
 	Tags         string    `xml:"tags" json:"tags"`
 	ArticleCount int       `xml:"articleCount" json:"article_count"`
 	MediaCount   int       `xml:"mediaCount" json:"media_count"`
-	Author       Author    `xml:"author" json:"author"`
-	Publisher    Publisher `xml:"publisher" json:"publisher"`
-}
-
-type Author struct {
-	XMLName xml.Name `xml:"author" json:"author"`
-	Name    string   `xml:"name" json:"name"`
-}
-
-type Publisher struct {
-	XMLName xml.Name `xml:"publisher" json:"publisher"`
-	Name    string   `xml:"name" json:"name"`
+	Author       struct {
+		XMLName xml.Name `xml:"author" json:"author"`
+		Name    string   `xml:"name" json:"name"`
+	} `xml:"author" json:"author"`
+	Publisher struct {
+		XMLName xml.Name `xml:"publisher" json:"publisher"`
+		Name    string   `xml:"name" json:"name"`
+	} `xml:"publisher" json:"publisher"`
+	Link []struct {
+		Type   string  `xml:"type,attr"`
+		Href   string  `xml:"href,attr"`
+		Rel    *string `xml:"rel,attr"`
+		Length *string `xml:"length,attr"`
+	} `xml:"link" json:"links"`
 }
